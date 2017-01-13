@@ -4,6 +4,7 @@ body{
     margin: 0;
     padding:0;
     width:100%;
+    -moz-user-select:none;
 }
 
 li{
@@ -13,8 +14,6 @@ li{
 .container_top{
     width:100%;
     height:80px;
-    box-shadow:0px 2px 4px #9f9ea4;
-    z-index: 999;
 }
 
 .all{
@@ -28,12 +27,18 @@ li{
     margin-left: 25px;
 }
 
-
 .slogan{
     margin-top: 31px;
     font-size: 18px;
     color: black;
     float: right;
+}
+
+.slogan:hover{
+    cursor: default;
+}
+
+.box{
 }
 
 .middle{
@@ -43,16 +48,43 @@ li{
     margin: 0;
     padding:0;
     background-color: #f6f8f9;
-    z-index:-1;
+    box-shadow: inset 1px 3px 5px #a8a7ad
 }
 
 
-.middle li {
+#zhifubao{
+    position: absolute;
+    top: 59px;
+    right: 60px;
+    display: none;
+}
+
+.middle_banner{
+    float: right;
+    z-index: 999;
+    overflow: hidden;
+}
+
+.middle_banner li{
+    height: 56px;
+    line-height: 56px;
     float: left;
+    margin: 0px 20px 0px 10px;
+}
+
+.middle_banner li:hover{
+    color: #040ead;
+    cursor: pointer;
 }
 
 .container_left{
+    position: absolute;
+    top: 135px;
+    bottom: 0px;
+    left: 0px;
     width: 300px;
+    font-size:18px;
+    border-right: 1px solid #cbcbcb;
 }
 
 .container_left ul{
@@ -61,11 +93,58 @@ li{
 }
 
 .banner{
-    text-align: center;
-    margin-top: 96px;
+    padding-top: 40px;
     height: 40px;
-
 }
-.banner:hover{
+
+.banner div{
+    padding-left: 45px;
+    line-height: 40px;
+    height: 40px;
+}
+.banner div span{
+    margin: 0px 4px 0px 1px;
+}
+
+.banner div img{
+    width: 10px;
+    height: 17px;
+}
+
+.banner div:hover{
     background-color: #eff1f3;
+    cursor: pointer;
+}
+
+
+.container_main{
+    position: absolute;
+    top:135px;
+    bottom: 0px;
+    left: 300px;
+    right: 0px;
+}
+
+.main{
+    font-size: 18px;
+    color: #464646;
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+}
+
+.title {
+    margin: 26px 0px 20px 50px;
+}
+
+.dropdown{
+    margin:10px  10px 10px 50px;
+    float: left;
+}
+
+.charts{
+    margin-left: 5%;
+    margin-top: 100px;
+    width: 90%;
+    height: 80%;
 }

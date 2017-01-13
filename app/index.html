@@ -3,12 +3,13 @@
 <head>
     <meta charset="utf-8">
     <title>ChromeY</title>
+    <script src="./minjs/jquery.js"></script>
+    <script src="./minjs/bootstrap.js"></script>
     <link rel="stylesheet" type="text/css" href="css/app.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <script src="./minjs/echarts.common.min.js"></script>
 </head>
 <body>
-
     <div class="container_top">
         <div class="all">
             <img src="img/face.jpg" width="60" height="60">
@@ -16,27 +17,59 @@
         </div>
     </div>
 
-    <ul class="middle">
-        <li>a</li>
-        <li>b</li>
-        <li>c</li>
-    </ul>
+    <div class="middle">
+        <ul class="middle_banner">
+            <li id="about_me">关于作者</li>
+            <li id="pay">打赏一下</li>
+            <li id="about_project">关于项目</li>
+        </ul>
+        <img id="zhifubao" src="img/pay.png" width="150px" height="150px">
+    </div>
 
 
     <div class="container_left">
         <div class="banner">
             <div>
-                <span class="glyphicon glyphicon-play"></span>
+                <span><img src="img/glyphicons-224-chevron-right.png"></span>
                 <span>访问记录</span>
             </div>
         </div>
     </div>
 
     <div class="container_main">
+        <div class="main">
+            <div class="title">谷歌浏览器历史记录</div>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                    选择时间
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1">今日</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1">昨日</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1">本周</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1">上周</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1">本月</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1">上月</a></li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
+                    显示类型
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+                    <li role="presentation"><a role="menuitem" tabindex="-1">饼状图</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1">柱状图</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1">雷达图</a></li>
+                </ul>
+            </div>
 
+            <div class="charts" id="main"></div>
+        </div>
     </div>
 
-
     <script src="./js/show.js"></script>
+    <script src="./js/middle.js"></script>
 </body>
 </html>
