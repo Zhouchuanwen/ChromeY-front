@@ -9,18 +9,7 @@ module.exports = function(grunt) {
                 open: false
             },
             proxies: [{
-                context: '/users',
-                changeOrigin: true,
-                host: "127.0.0.1",
-                port: 8080
-            },
-                {
-                    context: '/essays',
-                    changeOrigin: true,
-                    host: "127.0.0.1",
-                    port: 8080
-                },{
-                    context: '/login',
+                    context: '/history',
                     changeOrigin: true,
                     host: "127.0.0.1",
                     port: 8080
