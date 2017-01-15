@@ -1,5 +1,5 @@
-$(function () {
 
+$(function () {
     $('#pay').mouseenter(function () {
         $('#zhifubao').css("display","block");
     });
@@ -9,13 +9,91 @@ $(function () {
     });
 
     $('.drop').change(function () {
+        bin_option.series[0].data=[];
         var time=$("#time  option:selected").attr("value");
         var type=$("#type  option:selected").attr("value");
-        // getHistoryByDate(time);
         getCount(time);
     });
 
 });
+
+var getToday=function () {
+    $.ajax({
+        type:"GET",
+        url:"/history/today",
+        dataType:"json",
+        success:function (data) {
+            console.log(data);
+        },
+        error:function (XMLHttpRequest, textStatus) {
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(textStatus);
+        }
+    });
+};
+
+var getHistoryByDate=function (state) {
+    $.ajax({
+        type:"GET",
+        url:"/history/query",
+        data:{state:state},
+        dataType:"json",
+        success:function (data) {
+            console.log(data);
+        },
+        error:function (XMLHttpRequest, textStatus) {
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(textStatus);
+        }
+    });
+};
+
+var getRange=function () {
+    $.ajax({
+        type:"GET",
+        url:"/history/range",
+        dataType:"json",
+        success:function (data) {
+            console.log(data);
+        },
+        error:function (XMLHttpRequest, textStatus) {
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(textStatus);
+        }
+    });
+};
+
+var getCount=function (state) {
+    $.ajax({
+        type:"GET",
+        url:"/history/count",
+        data:{state:state},
+        dataType:"json",
+        success:function (data) {
+            var temp=data.data.slice(0,5);
+            temp.forEach(function (e) {
+                console.log(e);
+                var obj={
+                    value:e.num,
+                    name:e.title
+                };
+                bin_option.series[0].data.push(obj);
+            });
+            bin_option.series[0].data.sort(function (a, b) { return a.value - b.value});
+
+            var myChart = echarts.init(document.getElementById('main'));
+            myChart.setOption(bin_option);
+        },
+        error:function (XMLHttpRequest, textStatus) {
+            console.log("(status:"+XMLHttpRequest.status+",readyState:"+XMLHttpRequest.readyState+",textStatus:"+textStatus+")");
+            alert("请检查您的网络链接");
+        }
+    });
+};
+
 
 var bin_option = {
     backgroundColor: '#2c343c',
@@ -84,86 +162,5 @@ var bin_option = {
 };
 
 
-
-
-
-
-var getToday=function () {
-    $.ajax({
-        type:"GET",
-        url:"/history/today",
-        dataType:"json",
-        success:function (data) {
-            console.log(data);
-        },
-        error:function (XMLHttpRequest, textStatus) {
-            alert(XMLHttpRequest.status);
-            alert(XMLHttpRequest.readyState);
-            alert(textStatus);
-        }
-    });
-};
-
-var getHistoryByDate=function (state) {
-    $.ajax({
-        type:"GET",
-        url:"/history/query",
-        data:{state:state},
-        dataType:"json",
-        success:function (data) {
-            console.log(data);
-        },
-        error:function (XMLHttpRequest, textStatus) {
-            alert(XMLHttpRequest.status);
-            alert(XMLHttpRequest.readyState);
-            alert(textStatus);
-        }
-    });
-};
-
-var getRange=function () {
-    $.ajax({
-        type:"GET",
-        url:"/history/range",
-        dataType:"json",
-        success:function (data) {
-            console.log(data);
-        },
-        error:function (XMLHttpRequest, textStatus) {
-            alert(XMLHttpRequest.status);
-            alert(XMLHttpRequest.readyState);
-            alert(textStatus);
-        }
-    });
-};
-
-var getCount=function (state) {
-    $.ajax({
-        type:"GET",
-        url:"/history/count",
-        data:{state:state},
-        dataType:"json",
-        success:function (data) {
-            console.log(data.data);
-
-            var temp=data.data.slice(0,5);
-            temp.forEach(function (e) {
-                var obj={
-                    value:e.num,
-                    name:e.title
-                };
-                bin_option.series[0].data.push(obj);
-            });
-            bin_option.series[0].data.sort(function (a, b) { return a.value - b.value});
-            var myChart = echarts.init(document.getElementById('main'));
-            myChart.setOption(bin_option);
-        },
-        error:function (XMLHttpRequest, textStatus) {
-            alert(XMLHttpRequest.status);
-            alert(XMLHttpRequest.readyState);
-            alert(textStatus);
-        }
-    });
-};
 
 
