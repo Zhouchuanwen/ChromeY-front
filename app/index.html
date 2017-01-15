@@ -39,30 +39,24 @@
     <div class="container_main">
         <div class="main">
             <div class="title">谷歌浏览器历史记录</div>
-            <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                    选择时间
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                    <li role="presentation"><a role="menuitem" tabindex="-1">今日</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1">昨日</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1">本周</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1">上周</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1">本月</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1">上月</a></li>
-                </ul>
+            <div class="drop">
+                <select id="time" class="dropdown select">
+                    <option>选择时间</option>
+                    <option value="1">今日</option>
+                    <option value="2">昨日</option>
+                    <option value="3">上周</option>
+                    <option value="4">本月</option>
+                    <option value="5">上月</option>
+                </select>
             </div>
-            <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
-                    显示类型
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
-                    <li role="presentation"><a role="menuitem" tabindex="-1">饼状图</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1">柱状图</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1">雷达图</a></li>
-                </ul>
+
+            <div class="drop">
+                <select id="type" class="dropdown select">
+                    <option>选择类型</option>
+                    <option value="1">饼状图</option>
+                    <option value="2">柱状图</option>
+                    <option value="3">雷达图</option>
+                </select>
             </div>
 
             <div class="charts" id="main"></div>

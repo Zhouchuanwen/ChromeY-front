@@ -1,9 +1,5 @@
-var fetch=function(e) {
-    console.log(e);
-};
-
-
 $(function () {
+
     $('#pay').mouseenter(function () {
         $('#zhifubao').css("display","block");
     });
@@ -12,16 +8,76 @@ $(function () {
         $('#zhifubao').css("display","none");
     });
 
-
-    $('.dropdown-menu li').click(function () {
-        $.ajax({
-            type: "GET",
-            url: "/history/range",
-            data: {},
-            dataType: "json",
-            success: function(data){
-                console.log(data);
-            }
-        });
+    $('.drop').change(function () {
+        var time=$("#time  option:selected").attr("value");
+        var type=$("#type  option:selected").attr("value");
+        getHistoryByDate(time);
     });
+
 });
+
+var getToday=function () {
+    $.ajax({
+        type:"GET",
+        url:"/history/today",
+        dataType:"json",
+        success:function (data) {
+            console.log(data);
+        },
+        error:function (XMLHttpRequest, textStatus) {
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(textStatus);
+        }
+    });
+};
+
+var getHistoryByDate=function (state) {
+    $.ajax({
+        type:"GET",
+        url:"/history/query",
+        data:{state:state},
+        dataType:"json",
+        success:function (data) {
+            console.log(data);
+        },
+        error:function (XMLHttpRequest, textStatus) {
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(textStatus);
+        }
+    });
+};
+
+var getRange=function () {
+    $.ajax({
+        type:"GET",
+        url:"/history/range",
+        dataType:"json",
+        success:function (data) {
+            console.log(data);
+        },
+        error:function (XMLHttpRequest, textStatus) {
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(textStatus);
+        }
+    });
+};
+
+var getCount=function (state) {
+    $.ajax({
+        type:"GET",
+        url:"/history/count",
+        data:{state:state},
+        dataType:"json",
+        success:function (data) {
+            console.log(data);
+        },
+        error:function (XMLHttpRequest, textStatus) {
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(textStatus);
+        }
+    });
+};
