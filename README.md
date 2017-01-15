@@ -5,4 +5,4 @@
 
 
 ####界面:
-    ![image](https://github.com/Zhouchuanwen/ChromeY-front/blob/master/app/img/details.jpg)
+    ![image](https://github.com/Zhouchuanwen/ChromeY-front/blob/master/app/img/details.png)
